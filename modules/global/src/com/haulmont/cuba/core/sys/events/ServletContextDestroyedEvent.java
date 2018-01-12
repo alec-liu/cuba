@@ -24,18 +24,17 @@ import javax.servlet.ServletContext;
 /**
  * Application lifecycle event.
  * <p>
- * Published right after initialization of Servlet and Application contexts. Allows to register custom
- * {@code Servlets}, {@code Filters} and {@code Listeners} manually.
+ * Published when Servlet and Application are about to be shut down. Allows to free resources manually.
  */
-public class ServletContextInitializedEvent extends ApplicationEvent {
+public class ServletContextDestroyedEvent extends ApplicationEvent {
     protected ApplicationContext applicationContext;
 
-    public ServletContextInitializedEvent(ServletContext source, ApplicationContext applicationContext) {
+    public ServletContextDestroyedEvent(ServletContext source, ApplicationContext applicationContext) {
         this(source);
         this.applicationContext = applicationContext;
     }
 
-    public ServletContextInitializedEvent(ServletContext source) {
+    public ServletContextDestroyedEvent(ServletContext source) {
         super(source);
     }
 

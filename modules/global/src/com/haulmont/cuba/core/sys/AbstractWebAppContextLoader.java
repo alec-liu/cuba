@@ -19,8 +19,8 @@ package com.haulmont.cuba.core.sys;
 
 import ch.qos.logback.classic.LoggerContext;
 import com.google.common.base.Splitter;
-import com.haulmont.cuba.core.global.AppBeans;
 import com.haulmont.cuba.core.global.Events;
+import com.haulmont.cuba.core.sys.events.ServletContextDestroyedEvent;
 import com.haulmont.cuba.core.sys.events.ServletContextInitializedEvent;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -75,8 +75,10 @@ public abstract class AbstractWebAppContextLoader extends AbstractAppContextLoad
             initAppContext();
             afterInitAppContext();
 
-            AppBeans.get(Events.class)
-                    .publish(new ServletContextInitializedEvent(sc));
+            ApplicationContext applicationContext = AppContext.getApplicationContext();
+
+            applicationContext.getBean(Events.class)
+                    .publish(new ServletContextInitializedEvent(sc, applicationContext));
 
             AppContext.Internals.startContext();
             log.info("AppContext started");
@@ -96,6 +98,15 @@ public abstract class AbstractWebAppContextLoader extends AbstractAppContextLoad
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        ApplicationContext applicationContext = AppContext.getApplicationContext();
+
+        applicationContext.getBean(Events.class)
+                .publish(new ServletContextDestroyedEvent(
+                                servletContextEvent.getServletContext(),
+                                applicationContext
+                        )
+                );
+
         AppContext.Internals.stopContext();
         AppContext.Internals.setApplicationContext(null);
 
