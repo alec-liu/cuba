@@ -19,6 +19,9 @@ package com.haulmont.cuba.core.sys;
 
 import ch.qos.logback.classic.LoggerContext;
 import com.google.common.base.Splitter;
+import com.haulmont.cuba.core.global.AppBeans;
+import com.haulmont.cuba.core.global.Events;
+import com.haulmont.cuba.core.sys.events.ServletContextInitializedEvent;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.text.StrSubstitutor;
@@ -71,6 +74,9 @@ public abstract class AbstractWebAppContextLoader extends AbstractAppContextLoad
             beforeInitAppContext();
             initAppContext();
             afterInitAppContext();
+
+            AppBeans.get(Events.class)
+                    .publish(new ServletContextInitializedEvent(sc));
 
             AppContext.Internals.startContext();
             log.info("AppContext started");
