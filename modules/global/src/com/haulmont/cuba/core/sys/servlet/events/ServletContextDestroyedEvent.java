@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.haulmont.cuba.core.sys.events;
+package com.haulmont.cuba.core.sys.servlet.events;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
@@ -24,7 +24,7 @@ import javax.servlet.ServletContext;
 /**
  * Application lifecycle event.
  * <p>
- * Published when Servlet and Application are about to be shut down. Allows to free resources manually.
+ * Published when Servlet and Application are about to be shut down. Enables to free resources manually.
  */
 public class ServletContextDestroyedEvent extends ApplicationEvent {
     protected ApplicationContext applicationContext;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.haulmont.cuba.core.sys.events;
+package com.haulmont.cuba.core.sys.servlet.events;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
@@ -24,7 +24,7 @@ import javax.servlet.ServletContext;
 /**
  * Application lifecycle event.
  * <p>
- * Published right after initialization of Servlet and Application contexts. Allows to register custom
+ * Published right after initialization of Servlet and Application contexts. Enables to register custom
  * {@code Servlets}, {@code Filters} and {@code Listeners} manually.
  */
 public class ServletContextInitializedEvent extends ApplicationEvent {
