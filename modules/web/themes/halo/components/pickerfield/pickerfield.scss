@@ -221,7 +221,7 @@
     }
   }
 
-  .v-sa .#{$primary-stylename} > .#{$primary-stylename}-layout > .ie9-input-wrap {
+  .v-sa & .#{$primary-stylename} > .#{$primary-stylename}-layout > .ie9-input-wrap {
     display: inline-block;
   }
 
