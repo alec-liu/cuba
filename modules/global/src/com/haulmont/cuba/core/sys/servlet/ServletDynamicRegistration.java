@@ -44,7 +44,7 @@ public interface ServletDynamicRegistration {
      *
      * @param context     {@link ApplicationContext} instance
      * @param filterClass Fully qualified name of the created filter
-     * @return {@link Filter instance
+     * @return {@link Filter} instance
      */
     Filter createFilter(ApplicationContext context, String filterClass);
 }
