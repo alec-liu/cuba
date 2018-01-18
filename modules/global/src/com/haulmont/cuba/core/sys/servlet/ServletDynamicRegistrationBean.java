@@ -34,16 +34,14 @@ public class ServletDynamicRegistrationBean implements ServletDynamicRegistratio
             clazz = (Class<? extends Servlet>) context.getClassLoader()
                     .loadClass(servletClass);
         } catch (ClassNotFoundException e) {
-            String msg = String.format("Failed to load servlet class: %s", servletClass);
-            throw new RuntimeException(msg, e);
+            throw new RuntimeException("Failed to load servlet class: " + servletClass, e);
         }
 
         Servlet servlet;
         try {
             servlet = clazz.newInstance();
         } catch (IllegalAccessException | InstantiationException e) {
-            String msg = String.format("Failed to get an instance of a class: %s", servletClass);
-            throw new RuntimeException(msg, e);
+            throw new RuntimeException("Failed to get an instance of a class: " + servletClass, e);
         }
 
         return servlet;
@@ -58,16 +56,14 @@ public class ServletDynamicRegistrationBean implements ServletDynamicRegistratio
             clazz = (Class<? extends Filter>) context.getClassLoader()
                     .loadClass(filterClass);
         } catch (ClassNotFoundException e) {
-            String msg = String.format("Failed to load filter class: %s", filterClass);
-            throw new RuntimeException(msg, e);
+            throw new RuntimeException("Failed to load filter class: " + filterClass, e);
         }
 
         Filter servlet;
         try {
             servlet = clazz.newInstance();
         } catch (IllegalAccessException | InstantiationException e) {
-            String msg = String.format("Failed to get an instance of a class: %s", filterClass);
-            throw new RuntimeException(msg, e);
+            throw new RuntimeException("Failed to get an instance of a class: " + filterClass, e);
         }
 
         return servlet;

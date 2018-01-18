@@ -25,7 +25,7 @@ import javax.servlet.Servlet;
  * A bean that enable to create Servlets and Filters with correct classloader to be able to use such static classes
  * as {@link com.haulmont.cuba.core.sys.AppContext}.
  * <p>
- * It is recommended to use this bean in case of single WAR or single UberJAR deployments.
+ * It is recommended to use this bean to guarantee correct work for all deployment options.
  */
 public interface ServletDynamicRegistration {
     String NAME = "cuba_ServletDynamicRegistration";

@@ -104,8 +104,7 @@ public abstract class AbstractWebAppContextLoader extends AbstractAppContextLoad
                 .publish(new ServletContextDestroyedEvent(
                                 servletContextEvent.getServletContext(),
                                 applicationContext
-                        )
-                );
+                        ));
 
         AppContext.Internals.stopContext();
         AppContext.Internals.setApplicationContext(null);
