@@ -22,13 +22,13 @@ import javax.servlet.Filter;
 import javax.servlet.Servlet;
 
 /**
- * A bean that enable to create Servlets and Filters with correct classloader to be able to use such static classes
+ * A bean that enables to create Servlets and Filters with correct classloader to be able to use such static classes
  * as {@link com.haulmont.cuba.core.sys.AppContext}.
  * <p>
  * It is recommended to use this bean to guarantee correct work for all deployment options.
  */
-public interface ServletDynamicRegistration {
-    String NAME = "cuba_ServletDynamicRegistration";
+public interface ServletRegistrationManager {
+    String NAME = "cuba_ServletRegistrationManager";
 
     /**
      * Creates a servlet of the given {@code servletClass} with a classloader of the given {@code context}.

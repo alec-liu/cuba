@@ -22,8 +22,8 @@ import org.springframework.stereotype.Component;
 import javax.servlet.Filter;
 import javax.servlet.Servlet;
 
-@Component(ServletDynamicRegistration.NAME)
-public class ServletDynamicRegistrationBean implements ServletDynamicRegistration {
+@Component(ServletRegistrationManager.NAME)
+public class ServletRegistrationManagerBean implements ServletRegistrationManager {
 
     @Override
     public Servlet createServlet(ApplicationContext context, String servletClass) {
